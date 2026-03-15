@@ -57,11 +57,6 @@ public final class Config {
     return get("app.base.url", "https://demo.spreecommerce.org");
   }
 
-  /** Example page URL (e.g. https://playwright.dev) */
-  public static String getExampleUrl() {
-    return get("app.example.url", "https://playwright.dev");
-  }
-
   /** Browser name: chromium, chrome, firefox, webkit. Use "chrome" for installed Google Chrome. */
   public static String getBrowserName() {
     return get("app.browser.name", "chromium");
@@ -83,4 +78,69 @@ public final class Config {
     return base + p;
   }
 
+  /** Example page URL (e.g. https://playwright.dev) */
+  public static String getExampleUrl() {
+    return get("app.example.url", "https://playwright.dev");
+  }
+
+
+  public static String getHomeUrl() {
+    return url(get("app.path.home", "/"));
+  }
+
+  public static String getProductsUrl() {
+    return url(get("app.path.products", "/products"));
+  }
+
+  public static String getCartUrl() {
+    return url(get("app.path.cart", "/cart"));
+  }
+
+  public static String getLoginUrl() {
+    return url(get("app.path.login", "/user/sign_in"));
+  }
+
+  public static String getSignUpUrl() {
+    return url(get("app.path.signup", "/user/sign_up"));
+  }
+
+  public static String getCheckoutPath() {
+    return get("app.path.checkout", "/checkout");
+  }
+
+  /** Full URL for a product detail page (e.g. /products/silver-chain) */
+  public static String getProductDetailUrl(String productSlug) {
+    String productsPath = get("app.path.products", "/products");
+    String path = productsPath.endsWith("/") ? productsPath + productSlug : productsPath + "/" + productSlug;
+    return url(path);
+  }
+
+  public static String getTestCardNumber() {
+    return get("test.card.number", "4111111111111111");
+  }
+
+  public static String getTestCardCvv() {
+    return get("test.card.cvv", "123");
+  }
+
+  public static String getTestCardExpiry() {
+    return get("test.card.expiry", "12/28");
+  }
+
+  public static String getTestCardHolderName() {
+    return get("test.card.holder.name", "Test User");
+  }
+
+  public static int getViewportWidth() {
+    return getInt("app.viewport.width", 1280);
+  }
+
+  public static int getViewportHeight() {
+    return getInt("app.viewport.height", 720);
+  }
+
+  /** Delay in milliseconds between each Cucumber step (0 to disable). Default 2000 (2 seconds). */
+  public static int getStepDelayMs() {
+    return getInt("app.execution.step.delay.ms", 2000);
+  }
 }
