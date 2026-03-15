@@ -18,16 +18,16 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          #cache: maven
+          cache: maven
 
       - name: Build and install dependencies
         run: mvn install -DskipTests -q
 
       - name: Install Playwright browsers (Chromium)
-        run: sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
+        run: mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install chromium" -pl tests -q
 
       - name: Run UI tests
-        run: mvn test -Dapp.browser.name=chromium -Dapp.browser.headless=true -Dapp.execution.step.delay.ms=0 -am -X
+        run: mvn test -pl tests -Dapp.browser.name=chromium -Dapp.browser.headless=true -Dapp.execution.step.delay.ms=0
         env:
           CI: true
 
