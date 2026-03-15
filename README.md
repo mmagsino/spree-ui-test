@@ -129,9 +129,10 @@ Unfortunately, I need to comment out the last steps on feature file as it was no
 ```
 I was not able to resolve the issue due to time constraint. Must probably verify if the element is ready.
 
-Workaround, run this headless is false and with a timeout of 2 secs, the test will pass. And uncomment the scenario steps.
+Workaround, run this headless to false and with a timeout of 2 secs, the test will pass. Uncomment the scenario steps.
 
 ```bash
 mvn test -Dapp.browser.name=chrome -Dapp.browser.headless=false -Dapp.execution.step.delay.ms=2000
 ```
+
 It should give a successful test run. BTW  only tested in **chrome** and **chromium**.
