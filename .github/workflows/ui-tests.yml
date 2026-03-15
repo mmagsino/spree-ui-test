@@ -24,10 +24,10 @@ jobs:
         run: mvn install -DskipTests -q
 
       - name: Install Playwright browsers (Chromium)
-        run: sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps" -pl tests -q
+        run: sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
 
       - name: Run UI tests
-        run: mvn test -pl tests -Dapp.browser.name=chromium -Dapp.browser.headless=true -Dapp.execution.step.delay.ms=0
+        run: mvn test -Dapp.browser.name=chromium -Dapp.browser.headless=true -Dapp.execution.step.delay.ms=0
         env:
           CI: true
 
