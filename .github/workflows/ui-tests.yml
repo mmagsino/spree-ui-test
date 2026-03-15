@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
+          #cache: maven
 
       - name: Build and install dependencies
         run: mvn install -DskipTests -q
@@ -27,7 +27,7 @@ jobs:
         run: sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
 
       - name: Run UI tests
-        run: mvn test -Dapp.browser.name=chromium -Dapp.browser.headless=true -Dapp.execution.step.delay.ms=0
+        run: mvn test -Dapp.browser.name=chromium -Dapp.browser.headless=true -Dapp.execution.step.delay.ms=0 -am -X
         env:
           CI: true
 
