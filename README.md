@@ -134,4 +134,4 @@ Workaround, run this headless is false and with a timeout of 2 secs, the test wi
 ```bash
 mvn test -Dapp.browser.name=chrome -Dapp.browser.headless=false -Dapp.execution.step.delay.ms=2000
 ```
-It should give a successful test run. BTW  only tested in chrome and chromium.
+It should give a successful test run. BTW  only tested in **chrome** and **chromium**.
